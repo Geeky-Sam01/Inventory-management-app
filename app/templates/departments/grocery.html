@@ -1,0 +1,141 @@
+{% extends 'base.html'%}
+{%block title%}Home{%endblock%}
+{% block content %}
+<div class="container-fluid col-10 my-5 p-4 bg-light border rounded">
+        <h1 class="display-3 text-center">Welcome to the Grocery Department</h1>
+        <p class="lead text-center">Explore a wide range of fresh and quality products.</p>
+    </div>
+
+    
+    <!-- Flash message -->
+<div class="container-fluid pt-3 col-10">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+    <!-- Table -->
+<div class="container-fluid col-10">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Product ID</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qantity</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for product_id, item in items.items() %}
+                <tr>
+                <td>{{ product_id }}</td>
+                <td>{{ item.Price }}</td>
+                <td>{{ item.Quantity }}</td>
+                <td>{{ item.Time }}</td>
+                <!-- <td>
+                  <a href="{{ url_for('departments.grocery_update', product_id=product_id) }}" class="btn btn-success">Update</a>
+                  <a href="{{ url_for('departments.grocery_update', product_id=product_id) }}" class="btn btn-danger">Delete</a>
+                </td> -->
+                <td>Update Delete</td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+
+  <!----------------- form ------------------------------------>
+<div class="container-fluid col-5 mt-5 text-center">
+        <!--------------Insertion form-------------->
+        {% if form%}
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+              Add Item
+          </button>
+          <div>
+              <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body  bg-light">
+                          <form action="{{ url_for('departments.grocery')}}" method="POST">
+                              
+                              {{form.hidden_tag()}}
+
+                              {{form.product_id.label(class='form-label')}}
+                              {{form.product_id(class='form-control')}}
+
+                              {{form.price.label(class='form-label')}}
+                              {{form.price(class='form-control')}}
+
+                              {{form.quantity.label(class='form-label')}}
+                              {{form.quantity(class='form-control')}}
+                              
+                              <br>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  {{form.submit(class='btn btn-success')}}
+                              </div>
+                          </form>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+</div>
+
+<div class="container-fluid col-5 mt-5 text-center">
+    <!----------------Update/Delete form-------------------->
+    {%if form%}
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Update Item
+        </button>
+        <div>
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Update Product</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body  bg-light">
+                        <form action="{{ url_for('departments.grocery_update')}}" method="POST">
+                            
+                            {{form.hidden_tag()}}
+
+                            {{form.product_id.label(class='form-label')}}
+                            {{form.product_id(class='form-control')}}
+
+                            {{form.price.label(class='form-label')}}
+                            {{form.price(class='form-control')}}
+
+                            {{form.quantity.label(class='form-label')}}
+                            {{form.quantity(class='form-control')}}
+                            
+                            <br>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                {{form.submit(class='btn btn-danger')}}
+                                {{form.submit(class='btn btn-danger')}}
+                            </div>
+                        </form>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+</div>
+{% endblock%}

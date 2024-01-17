@@ -1,0 +1,11 @@
+<!-- Not needed still there for future purpose -->
+{% extends 'base.html'%}
+{%block title%}Home{%endblock%}
+{% block content %}
+    <h1>Departments Home Page</h1>
+    <ul>
+        <li><a href="{{url_for('departments.grocery')}}">Grocery Department</a></li>
+        <li><a href="{{url_for('departments.electronics')}}">Electronics Department</a></li>
+        <li><a href="{{url_for('departments.clothing')}}">Clothing Department</a></li>
+    </ul>   
+{% endblock%}

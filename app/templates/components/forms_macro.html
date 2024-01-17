@@ -1,0 +1,45 @@
+form
+<div class="container-fluid col-5 mt-5 text-center">
+    <!-- Insertion form -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Item
+    </button>
+    <div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Product</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body  bg-light">
+                    <form action="{{ url_for('departments.grocery')}}" method="POST">
+                        
+                        {{form.hidden_tag()}}
+
+                        {{form.product_id.label(class='form-label')}}
+                        {{form.product_id(class='form-control')}}
+
+                        {{form.price.label(class='form-label')}}
+                        {{form.price(class='form-control')}}
+
+                        {{form.quantity.label(class='form-label')}}
+                        {{form.quantity(class='form-control')}}
+                        
+                        <br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {{form.submit(class='btn btn-success')}}
+                        </div>
+                    </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- updation form -->
+    <div> 
+    </div>
+</div>
+{% macro render_form()%}
