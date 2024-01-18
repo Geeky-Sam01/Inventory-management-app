@@ -1,88 +1,52 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<!-- <div class="container-fluid row align-items-start px-0 h-100">
-    Left menu
-    <div class="col-2 bg-light h-100">
-        <nav class="nav flex-column">
-            <a class="nav-link active" aria-current="page" href="#">Admin</a>
-            <a class="nav-link" href="#">Dashboard</a>
-            <a class="nav-link" href="#">Grocery</a>
-            <a class="nav-link" href="#">Electronics</a>
-            <a class="nav-link" href="#">Clothing</a>
-        </nav>
-    </div>
 
-    Dashboard section
-    <div class="col-10 text-light">
-        <div class="row">
-            <div class="col-4 px-0">
-                <div class="p-5 bg-primary text-light">
-                    <h2>Col 1</h2>
-                    <p>Content goes here.</p>
-                </div>
-            </div>
-            <div class="col-4 px-0">
-                <div class="p-5 bg-primary text-light">
-                    <h2>Col 2</h2>
-                    <p>Content goes here.</p>
-                </div>
-            </div>
-            <div class="col-4 px-0">
-                <div class="p-5 bg-primary text-light">
-                    <h2>Col 3</h2>
-                    <p>Content goes here.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-    <!-- offcanvas -->
     
     
-    <!-- offcanvas -->
+    <!-- Dashboard -->
 <div class="container-fluid row align-items-stretch px-0 h-100">
+    <!-- left side menu -->
         <div class="col-2 bg-dark">
                 <div class="d-flex flex-column p-3 text-white bg-dark">
                     <br>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="{{url_for('home.home')}}" class="nav-link {{active}}" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        Home
+                        <a href="{{url_for('home.home')}}" class="nav-link" aria-current="page">
+                            <i class="bi bi-house px-2"></i>
+                         Home
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                        Dashboard
+                    <li class="nav-item">
+                        <a href="{{url_for('home.home')}}" class="nav-link" aria-current="page">
+                            <i class="bi bi-speedometer px-2"></i>
+                             Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        Financials
+                    <li class="nav-item">
+                        <a href="{{url_for('home.home')}}" class="nav-link" aria-current="page">
+                            <i class="bi bi-cash-coin px-2"></i>
+                         Financials
                         </a>
                     </li>
-                    <li>
-                        <a href="{{url_for('departments.home')}}" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                        Products
+                    <li class="nav-item">
+                        <a href="{{url_for('departments.home')}}" class="nav-link" aria-current="page">
+                            <i class="bi bi-box-seam px-2 w-3"></i>
+                             Products
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                        Admin
+                    <li class="nav-item">
+                        <a href="{{url_for('home.home')}}" class="nav-link" aria-current="page">
+                            <i class="bi bi-person-fill-gear px-2"></i>
+                             Admin
                         </a>
                     </li>
                     </ul>
                     <hr>
                 </div>
         </div>
-        <!-- Right side -->
-        <div class="col-10 text-light">
+        <!-- Right side dashboard-->
+        <div class="col-10 text-light h-100">
                 <main class="pt-3">
                 <div class="container-fluid">
                     <div class="row">
@@ -181,6 +145,9 @@
                         </div>
                     </div>
                 </div>
+        </div>
+        <div class="container-fluid w-100 bg-dark">
+            Another section
         </div>
 </div>
 

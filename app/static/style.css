@@ -3,8 +3,19 @@
     margin:0;
   }
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-body,
-  button {
+body,button {
     font-family: "Inter", sans-serif;
     height: 100%;
   }
+.nav :hover{
+  --bs-nav-link-hover-color: #ffffff !important;
+  background-color: grey;
+  border-radius: 30px;
+}
+.nav-link{
+  color: #eff0f3;
+  
+}
+#body{
+  height: 100vh;
+}

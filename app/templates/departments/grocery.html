@@ -1,13 +1,25 @@
 {% extends 'base.html'%}
 {%block title%}Home{%endblock%}
 {% block content %}
-<div class="container-fluid col-10 my-5 p-4 bg-light border rounded">
-        <h1 class="display-3 text-center">Welcome to the Grocery Department</h1>
-        <p class="lead text-center">Explore a wide range of fresh and quality products.</p>
+<div class="container my-5 p-4 rounded">
+  <div class="row g-4">
+    <div class="col-lg-6 d-none d-lg-block">
+      <img src="https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?w=900&t=st=1705555913~exp=1705556513~hmac=6eb5b6fe1077d48c4ea8a915356a74eb01a1db2f6bb1cbbc16f349d3e6e85175" class="img-fluid rounded" alt="Fresh groceries" style="max-width: 500px;" />
     </div>
+    <div class="col-lg-6">
+      <h1 class="display-4 fw-bold text-center mb-4">Welcome to the Grocery Department</h1>
+      <p class="lead text-center mb-4">Explore a wide range of fresh and quality products.</p>
+      <div class="d-grid gap-3">
+        <a href="#" class="btn btn-lg btn-primary mt-lg-5 mt-sm-3">Shop Now <i class="bi bi-cart-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     
-    <!-- Flash message -->
+    <!-- Flash message
 <div class="container-fluid pt-3 col-10">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -19,7 +31,40 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-    </div>
+</div> -->
+<!--Toast code-->
+<!-- <div class="container-fluid pt-3 col-10 bg-dark" style="z-index: 1;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+              <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                      <div class="toast-header">
+                          <img src="..." class="rounded me-2" alt="...">
+                          <strong class="me-auto">{{ category }}</strong>
+                          <small>11 mins ago</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                      </div>
+                      <div class="toast-body">
+                          {{ message }}
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      {% endif %}
+  {% endwith %}
+</div> -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      {% include 'components/toasts.html' %}
+  {% endif %}
+{% endwith %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.toast').toast('show');
+    });
+</script>
 
 
     <!-- Table -->
@@ -127,7 +172,6 @@
                             <br>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                {{form.submit(class='btn btn-danger')}}
                                 {{form.submit(class='btn btn-danger')}}
                             </div>
                         </form>

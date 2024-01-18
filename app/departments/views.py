@@ -13,6 +13,7 @@ class GroceryInputs(FlaskForm):
     price = IntegerField('Price', validators=[DataRequired(),validators.NumberRange(min=1,max=999)])
     submit=SubmitField('Submit')
 
+
 class GroceryUpdateInputs(FlaskForm):
     product_id = StringField('Product_ID', validators=[DataRequired(),validators.length(min=1,max=50)])
     quantity = IntegerField('Quantity', validators=[DataRequired(),validators.NumberRange(min=1,max=999)])
