@@ -63,6 +63,21 @@ def grocery_update():
                 flash('Item not found in the stock!!','danger')
     return render_template('departments/grocery.html',items=items,form=form,num_of_items=len(items))
 
+@departments_bp.route('/grocery_delete',methods=['POST'])
+def grocery_delete():
+    form=GroceryInputs()
+    flash('Succesfully deleted items from Grocery_delete','delete')
+    if request.method=='POST':
+        id = request.args['product_id']
+        if items.__contains__(id):
+            items.pop(id)
+    return render_template('departments/grocery.html',items=items,form=form,num_of_items=len(items))
+
+
+
+
+
+
 
 @departments_bp.route('/electronics')
 def electronics():

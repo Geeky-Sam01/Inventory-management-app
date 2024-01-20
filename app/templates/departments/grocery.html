@@ -16,44 +16,6 @@
   </div>
 </div>
 
-
-
-    
-    <!-- Flash message
-<div class="container-fluid pt-3 col-10">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, message in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-            <strong>{{ message }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-</div> -->
-<!--Toast code-->
-<!-- <div class="container-fluid pt-3 col-10 bg-dark" style="z-index: 1;">
-  {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-          {% for category, message in messages %}
-              <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-                      <div class="toast-header">
-                          <img src="..." class="rounded me-2" alt="...">
-                          <strong class="me-auto">{{ category }}</strong>
-                          <small>11 mins ago</small>
-                          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                      </div>
-                      <div class="toast-body">
-                          {{ message }}
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-      {% endif %}
-  {% endwith %}
-</div> -->
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
       {% include 'components/toasts.html' %}
@@ -72,7 +34,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                  <th scope="col">Product ID</th>
+                  <th scope="col">Product Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Qantity</th>
                   <th scope="col">Time</th>
@@ -86,17 +48,21 @@
                 <td>{{ item.Price }}</td>
                 <td>{{ item.Quantity }}</td>
                 <td>{{ item.Time }}</td>
+                <td>
+                  <form action="{{ url_for('departments.grocery_delete', product_id=product_id) }}" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
                 <!-- <td>
                   <a href="{{ url_for('departments.grocery_update', product_id=product_id) }}" class="btn btn-success">Update</a>
                   <a href="{{ url_for('departments.grocery_update', product_id=product_id) }}" class="btn btn-danger">Delete</a>
                 </td> -->
-                <td>Update Delete</td>
 
                 </tr>
                 {% endfor %}
               </tbody>
         </table>
-    </div>
+</div>
 
   <!----------------- form ------------------------------------>
 <div class="container-fluid col-5 mt-5 text-center">
